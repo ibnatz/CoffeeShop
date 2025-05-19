@@ -1,19 +1,28 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text, Alert } from 'react-native';
+// import {  signInWithEmailAndPassword } from 'firebase/auth';
+// import { auth } from '../firebaseConfig'; // Adjust path based on your project structure
+
 
 export default function SignInScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignIn = () => {
-    if (!email || !password) {
-      Alert.alert('Error', 'Please fill in both fields');
-      return;
-    }
+  const handleSignIn = async () => {
+  if (!email || !password) {
+    Alert.alert('Error', 'Please fill in both fields');
+    return;
+  }
 
-    Alert.alert('Success', `Signed in with ${email}`);
-    // You can redirect to Home or Dashboard here if needed
-  };
+//   try {
+//     await signInWithEmailAndPassword(auth, email, password);
+//     Alert.alert('Success', `Signed in as ${email}`);
+//     // navigation.navigate('Home'); // Optional redirect
+//   } catch (error) {
+//     Alert.alert('Login Failed', error.message);
+//   }
+};
+
 
   return (
     <View style={styles.container}>

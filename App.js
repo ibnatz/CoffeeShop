@@ -1,20 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CreateAccountScreen from './components/Login';
 import SignInScreen from './components/SignIn';
-import { Text, View, Button, StyleSheet } from 'react-native';
-
-function HomeScreen({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text>Welcome to the App!</Text>
-      <Button title="Go to Sign Up" onPress={() => navigation.navigate('CreateAccount')} />
-      <Button title="Go to Sign In" onPress={() => navigation.navigate('SignIn')} color="gray" />
-    </View>
-  );
-}
+import HomeScreen from './components/HomeScreen';
+import { StyleSheet } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 

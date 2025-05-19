@@ -1,6 +1,6 @@
 // components/Login.js
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text, Alert, ScrollView } from 'react-native';
 
 export default function CreateAccountScreen({ navigation }) {
@@ -13,7 +13,7 @@ export default function CreateAccountScreen({ navigation }) {
         navigation.navigate('SignIn');
     };
 
-    const handleSignUp = () => {
+    const handleSignUp = async () => {
         if (!username || !email || !password || !confirmPassword) {
             Alert.alert('Error', 'Please fill in all fields');
             return;
@@ -24,7 +24,14 @@ export default function CreateAccountScreen({ navigation }) {
             return;
         }
 
-        Alert.alert('Success', `Account created for ${username}`);
+        try {
+            await createUserWithEmailAndPassword(auth, email, password);
+            Alert.alert('Success', `Account created for ${username}`);
+            // Optionally navigate to SignIn or Home:
+            // navigation.navigate('SignIn');
+        } catch (error) {
+            Alert.alert('Sign Up Failed', error.message);
+        }
     };
 
 
